@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react";
 const INITIAL_STATE = {
     tool: {
         inputJson: "",
+        loadedImages: [],
     },
     setTool: () => {},
     step: 1,

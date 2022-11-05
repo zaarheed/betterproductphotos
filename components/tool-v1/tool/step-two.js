@@ -10,27 +10,44 @@ export default function StepTwo() {
 	useEffect(() => {
 		if (!tool.inputJson) return;
 
-		setPosts(JSON.parse(tool.inputJson));
+		setPosts(tool.loadedImages);
 
 	}, [tool.inputJson]);
 
 	const handlePostSelection = (post) => {
 		let newSelectedPosts = [...selectedPosts];
 
-		if (!!newSelectedPosts.find(p => p.id === post.id)) {
-			newSelectedPosts = newSelectedPosts.filter(p => p.id !== post.id);
+		if (!!newSelectedPosts.find(p => p.shortcode === post.shortcode)) {
+			newSelectedPosts = newSelectedPosts.filter(p => p.shortcode !== post.shortcode);
 		} else {
 			if (selectedPosts.length >= 5) return;
 			
 			newSelectedPosts.push({
-				id: post.id,
 				shortcode: post.shortcode,
-				display_url: post.display_url
+				display_url: post.url
 			});
 		}
 
 		setSelectedPosts(newSelectedPosts);
 	};
+
+	const handleNextStep = async () => {
+		const response = await fetch("/api/generate", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ posts: selectedPosts })
+		}).catch(error => console.log(error));
+
+        console.log(response);
+
+        const { images } = await response.json();
+
+        setTool({ ...tool, resultImages: images });
+
+        nextStep();
+	}
 
     return (
 		<div className="w-full max-w-4xl mx-auto flex flex-col">
@@ -46,16 +63,17 @@ export default function StepTwo() {
                 {importedPosts.map(post => (
 					<figure
 						className={classNames(
-							"rounded-lg overflow-hidden group w-full aspect-square pointer-cursor"
+							"rounded-lg overflow-hidden group w-full aspect-square pointer-cursor border-4",
+							!!selectedPosts.find(p => p.shortcode === post.shortcode) ? "border-sky-400" : "border-transparent"
 						)}
 						key={post.shortcode}
 						onClick={() => handlePostSelection(post)}
 					>
 						<img
-							src={post.display_url}
+							src={post.url}
 							className={classNames(
 								"object-cover w-full group-hover:scale-125 duration-200",
-								!!selectedPosts.find(p => p.id === post.id) ? "saturate-100 scale-125" : "saturate-0"
+								!!selectedPosts.find(p => p.shortcode === post.shortcode) ? "saturate-100 scale-125" : "saturate-0"
 							)}
 						/>
 					</figure>
@@ -68,7 +86,7 @@ export default function StepTwo() {
                         bg-zinc-100 text-lg font-medium text-zinc-900 py-4 px-8
                     `}
                     type="button"
-                    onClick={nextStep}
+                    onClick={handleNextStep}
                 >
                     Next Step
                 </button>

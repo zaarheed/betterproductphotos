@@ -1,4 +1,5 @@
 import StepOne from "./step-one";
+import StepThree from "./step-three";
 import StepTwo from "./step-two";
 import { ToolProvider, useTool } from "./tool-context";
 
@@ -19,5 +20,9 @@ function Form(props) {
 
     if (step === 2) {
         return <StepTwo {...props} />;
+    }
+
+    if (step === 3) {
+        return <StepThree {...props} />;
     }
 }
