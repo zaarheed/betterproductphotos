@@ -1,6 +1,25 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "@next/next/no-img-element": ["off"]
-  }
+	"rules": {
+		"quotes": [
+			"error",
+			"double",
+			{
+				"allowTemplateLiterals": true
+			}
+		],
+		"max-len": [
+			"warn",
+			{
+				"code": 80,
+				"tabWidth": 4
+			}
+		],
+		"react/no-unescaped-entities": [
+			"warn"
+		],
+		"react/jsx-no-target-blank": [
+			"warn"
+		]
+	},
+	"extends": "next/core-web-vitals"
 }
