@@ -176,7 +176,7 @@ export default function Home() {
 				</div>
 				<div className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
 					{cities.map((city, index) => (
-						<div className="relative group w-full aspect-square rounded-lg overflow-hidden">
+						<div key={city.id} className="relative group w-full aspect-square rounded-lg overflow-hidden">
 							<img src={city.thumbUrl} className="absolute w-full h-full object-cover saturate-0 rounded-lg group-hover:saturate-100 group-hover:scale-105 duration-300" />
 							<div className="z-10 w-full h-full flex flex-col justify-between relative group-hover:bg-black group-hover:bg-opacity-20 duration-200">
 								<div className="relative w-full flex flex-row justify-between items-center px-4 py-3 text-white">
@@ -218,7 +218,7 @@ export default function Home() {
 							Use Bedu List as a travel guide on-the-go
 						</p>
 						{freeFeatures.map((feature, index) => (
-							<div className="w-full flex flex-row items-start mb-2 font-light" ke={index}>
+							<div className="w-full flex flex-row items-start mb-2 font-light" key={index}>
 								<svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mt-1 mr-2 shrink-0" fill="currentColor" stroke="none" viewBox="0 0 469.933 469.933">
 									<path d="M429.281,44.605c-3.265-5.763-8.479-8.939-14.681-8.939c-3.482,0-6.997,1.018-9.912,2.818
 											c-2.046,0.967-3.783,2.178-5.306,3.702c-92.628,92.594-171.423,169.412-254.288,242.798l-43.498-52.811
@@ -248,7 +248,7 @@ export default function Home() {
 							Join Muslim nomads everywhere
 						</p>
 						{paidFeatures.map((feature, index) => (
-							<div className="w-full flex flex-row items-start mb-2 font-light" ke={index}>
+							<div className="w-full flex flex-row items-start mb-2 font-light" key={index}>
 								<svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mt-1 mr-2 shrink-0" fill="currentColor" stroke="none" viewBox="0 0 469.933 469.933">
 									<path d="M429.281,44.605c-3.265-5.763-8.479-8.939-14.681-8.939c-3.482,0-6.997,1.018-9.912,2.818
 											c-2.046,0.967-3.783,2.178-5.306,3.702c-92.628,92.594-171.423,169.412-254.288,242.798l-43.498-52.811

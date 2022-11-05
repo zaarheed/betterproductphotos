@@ -5,7 +5,7 @@ export default function Success({ onClose = () => {} }) {
         <div className="w-full h-full flex flex-col justify-center items-center border-4 border-white bg-black text-white p-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="154px" height="154px">
                 <g fill="none" stroke="#ffffff" strokeWidth="2">
-                    <circle classNames={styles.circle} cx="77" cy="77" r="72" style={{ "stroke-dasharray": "480px, 480px", "stroke-dashoffset": "960px" }} />
+                    <circle className={styles.circle} cx="77" cy="77" r="72" style={{ "stroke-dasharray": "480px, 480px", "stroke-dashoffset": "960px" }} />
                     <circle className={styles.coloredCircle} fill="#ffffff" cx="77" cy="77" r="72" style={{ "stroke-dasharray": "480px, 480px", "stroke-dashoffset": "960px" }} />
                     <polyline className={styles.polyline} stroke="#000000" strokeWidth="10" points="43.5,77.8 63.7,97.9 112.2,49.4 " style={{ "stroke-dasharray" : "100px, 100px", "stroke-dashoffset": "200px" }} />
                 </g>
