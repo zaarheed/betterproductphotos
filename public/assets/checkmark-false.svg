@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="32px" viewBox="0 0 35 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>checkmark-false</title>
+    <g id="checkmark-false" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <line x1="2.5" y1="6.5" x2="25.5" y2="29.5" id="Line-10" stroke="#000000" stroke-width="6"></line>
+        <line x1="25.5" y1="6.5" x2="2.5" y2="29.5" id="Line-10" stroke="#000000" stroke-width="6"></line>
+    </g>
+</svg>
