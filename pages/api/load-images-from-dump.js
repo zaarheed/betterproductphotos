@@ -10,7 +10,7 @@ export default async function LoadImagesFromDump(req, res) {
 
     const resultImages = [];
 
-    for (let i = 0; i < posts.length; i++) {
+    for (let i = 0; i < 1; i++) {
         const post = posts[i];
         const { display_url, shortcode } = post;
 
