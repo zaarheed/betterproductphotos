@@ -5,16 +5,25 @@ export default function StepOne() {
     const { tool, setTool, nextStep } = useTool();
 
     const handleNextStep = async () => {
-        const response = await api.post("image-generation/load-images-from-dump", {
-            posts: JSON.parse(tool.inputJson)
-        }).catch(error => console.log(error));
+        const posts = JSON.parse(tool.inputJson);
 
-        console.log(response);
+        let loadedImages = [];
 
-        const { images } = await response.json();
+        while (posts.length > 0) {
+            const chunk = posts.splice(0,3);
+            
+            const response = await api.post("image-generation/load-images-from-dump", {
+                posts: chunk
+            }).catch(error => console.log(error));
+            
+            const { images } = await response.json();
 
-        setTool({ ...tool, loadedImages: images });
-
+            loadedImages = [...loadedImages, ...images];
+            
+        }
+        
+        setTool({ ...tool, loadedImages: loadedImages });
+        
         nextStep();
     }
 

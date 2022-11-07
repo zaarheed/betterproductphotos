@@ -32,15 +32,22 @@ export default function StepTwo() {
 	};
 
 	const handleNextStep = async () => {
-		const response = await api.post("image-generation/generate", {
-			posts: selectedPosts
-		}).catch(error => console.log(error));
+		let resultImages = [];
 
-        console.log(response);
+		while (selectedPosts.length > 0) {
+            const chunk = selectedPosts.splice(0,1);
+            
+            const response = await api.post("image-generation/generate", {
+				posts: chunk
+			}).catch(error => console.log(error));
+            
+            const { images } = await response.json();
 
-        const { images } = await response.json();
-
-        setTool({ ...tool, resultImages: images });
+            resultImages = [...resultImages, ...images];
+            
+        }
+        
+        setTool({ ...tool, resultImages: resultImages });
 
         nextStep();
 	}
