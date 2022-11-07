@@ -16,7 +16,7 @@ export default async function LoadImagesFromDump(req, res) {
 
         const remoteImage = await Jimp.read(display_url);
         remoteImage.cover(1000, 1000, Jimp.HORIZONTAL_ALIGN_LEFT | Jimp.VERTICAL_ALIGN_TOP);
-        await remoteImage.writeAsync(`${process.cwd()}/public/uploads/${shortcode}.png`);
+        await remoteImage.writeAsync(`${process.cwd()}/tmp/${shortcode}.png`);
 
         resultImages.push({ shortcode, local_url: `/uploads/${shortcode}.png`, remote_url: display_url });
     }
