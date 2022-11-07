@@ -26,7 +26,7 @@ export default function StepThree() {
                         target="_blank"
 					>
 						<img
-							src={image.local_url}
+							src={image.copy_url}
 							className={classNames(
 								"object-cover w-full duration-200",
 							)}

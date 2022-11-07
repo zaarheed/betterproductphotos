@@ -1,6 +1,10 @@
 import { Configuration, OpenAIApi } from "openai";
 import fs from "fs";
 import Jimp from "jimp";
+import config from "@/constants/config";
+import ImageKit from "imagekit";
+
+const { imagekitPrivateKey, imagekitPublicKey, imagekitUrlEndpoint, tempFolderPath } = config;
 
 const configuration = new Configuration({
     apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -15,17 +19,23 @@ export default async function Generate(req, res) {
         return;
     }
 
-    // res.json({ images: posts.map(p => ({ shortcode: p.shortcode, variation: 1, version: 0, url: `/uploads/${p.shortcode}.png` })) });
-    // return;
-
     const resultImages = [];
     const loopLength = posts.length > 4 ? 4 : posts.length;
 
+    const imagekit = new ImageKit({
+        publicKey : imagekitPublicKey,
+        privateKey : imagekitPrivateKey,
+        urlEndpoint : imagekitUrlEndpoint
+    });
+
     for (let i = 0; i < loopLength; i++) {
         const post = posts[i];
-        const { local_url, remote_url, shortcode } = post;
+        const { copy_url, remote_url, shortcode } = post;
 
-        const localImage = fs.createReadStream(`${process.cwd()}/public${local_url}`);
+        const remoteImage = await Jimp.read(copy_url);
+        await remoteImage.writeAsync(`${tempFolderPath}/${shortcode}.png`);
+
+        const localImage = fs.createReadStream(`${tempFolderPath}/${shortcode}.png`);
 
         const { data } = await openai.createImageVariation(
             localImage,
@@ -35,7 +45,13 @@ export default async function Generate(req, res) {
 
         for (let j = 0; j < data.data.length; j++) {
             const image = data.data[j];
-            resultImages.push({ shortcode, local_url: image.url, variation: j + 1, version: 0, remote_url: remote_url });
+
+            const { url } = await imagekit.upload({
+                file : image.url,
+                fileName : `${shortcode}.png`,
+            });
+
+            resultImages.push({ shortcode, copy_url: url, openai_url: image.url, variation: j + 1, version: 0, remote_url: remote_url });
         }
     }
 

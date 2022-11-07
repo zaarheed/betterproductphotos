@@ -69,7 +69,7 @@ export default function StepTwo() {
 						onClick={() => handlePostSelection(post)}
 					>
 						<img
-							src={post.local_url}
+							src={post.copy_url}
 							className={classNames(
 								"object-cover w-full group-hover:scale-125 duration-200",
 								!!selectedPosts.find(p => p.shortcode === post.shortcode) ? "saturate-100 scale-125" : "saturate-0"
