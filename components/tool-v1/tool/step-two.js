@@ -1,3 +1,4 @@
+import { api } from "@/services/api";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { useTool } from "./tool-context"
@@ -31,12 +32,8 @@ export default function StepTwo() {
 	};
 
 	const handleNextStep = async () => {
-		const response = await fetch("/api/generate", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ posts: selectedPosts })
+		const response = await api.post("image-generation/generate", {
+			posts: selectedPosts
 		}).catch(error => console.log(error));
 
         console.log(response);

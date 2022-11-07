@@ -1,15 +1,12 @@
+import { api } from "@/services/api";
 import { useTool } from "./tool-context"
 
 export default function StepOne() {
     const { tool, setTool, nextStep } = useTool();
 
     const handleNextStep = async () => {
-        const response = await fetch("/api/load-images-from-dump", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ posts: JSON.parse(tool.inputJson) }),
+        const response = await api.post("image-generation/load-images-from-dump", {
+            posts: JSON.parse(tool.inputJson)
         }).catch(error => console.log(error));
 
         console.log(response);

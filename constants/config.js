@@ -2,6 +2,7 @@ export default {
     airtableApiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY,
     airtableBaseId: process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID,
     airtableTableName: process.env.NEXT_PUBLIC_AIRTABLE_TABLE_NAME,
+    apiUrl: process.env.NEXT_PUBLIC_API_URL,
     environment: process.env.NEXT_PUBLIC_ENVIRONMENT,
     googleAnalyticsTrackingId: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
     googleApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
