@@ -23,8 +23,7 @@ export default function StepTwo() {
 			if (selectedPosts.length >= 5) return;
 			
 			newSelectedPosts.push({
-				shortcode: post.shortcode,
-				display_url: post.url
+				...post
 			});
 		}
 
@@ -70,7 +69,7 @@ export default function StepTwo() {
 						onClick={() => handlePostSelection(post)}
 					>
 						<img
-							src={post.url}
+							src={post.local_url}
 							className={classNames(
 								"object-cover w-full group-hover:scale-125 duration-200",
 								!!selectedPosts.find(p => p.shortcode === post.shortcode) ? "saturate-100 scale-125" : "saturate-0"

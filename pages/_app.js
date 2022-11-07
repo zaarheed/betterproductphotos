@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Head>
-				<title>Bedu List | Best places to live for Muslim Nomads</title>
+				<title>inst-AI-gram | Don't build a business. Build a brand.</title>
 			</Head>
 			<Component {...pageProps} />
 		</QueryClientProvider>

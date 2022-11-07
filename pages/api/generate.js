@@ -23,23 +23,19 @@ export default async function Generate(req, res) {
 
     for (let i = 0; i < loopLength; i++) {
         const post = posts[i];
-        const { display_url, shortcode } = post;
+        const { local_url, remote_url, shortcode } = post;
 
-        // const remoteImage = await Jimp.read(display_url);
-        // remoteImage.cover(1000, 1000, Jimp.HORIZONTAL_ALIGN_LEFT | Jimp.VERTICAL_ALIGN_TOP);
-        // await remoteImage.writeAsync(`${process.cwd()}/public/uploads/${shortcode}.png`);
-
-        const localImage = fs.createReadStream(`${process.cwd()}/public${display_url}`);
+        const localImage = fs.createReadStream(`${process.cwd()}/public${local_url}`);
 
         const { data } = await openai.createImageVariation(
             localImage,
-            4,
+            3,
             "256x256"
         );
 
         for (let j = 0; j < data.data.length; j++) {
             const image = data.data[j];
-            resultImages.push({ shortcode, url: image.url, variation: j + 1, version: 0 });
+            resultImages.push({ shortcode, local_url: image.url, variation: j + 1, version: 0, remote_url: remote_url });
         }
     }
 

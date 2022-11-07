@@ -1,11 +1,8 @@
 import classNames from "classnames";
-import { useEffect, useState } from "react";
 import { useTool } from "./tool-context"
 
 export default function StepThree() {
-    const { tool, setTool, nextStep } = useTool();
-	const [importedPosts, setPosts] = useState([]);
-	const [selectedPosts, setSelectedPosts] = useState([]);
+    const { tool } = useTool();
 	const { resultImages = [] } = tool;
 
     return (
@@ -20,19 +17,21 @@ export default function StepThree() {
 
             <div className="w-full grid grid-cols-3 gap-8">
                 {resultImages.map(image => (
-					<figure
+					<a
 						className={classNames(
 							"rounded-lg overflow-hidden group w-full aspect-square pointer-cursor border-4 border-transparent",
 						)}
 						key={image.shortcode}
+                        href={image.remote_url}
+                        target="_blank"
 					>
 						<img
-							src={image.url}
+							src={image.local_url}
 							className={classNames(
 								"object-cover w-full duration-200",
 							)}
 						/>
-					</figure>
+					</a>
 				))}
             </div>
 
