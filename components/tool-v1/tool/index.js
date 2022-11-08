@@ -1,6 +1,7 @@
 import StepOne from "./step-one";
 import StepThree from "./step-three";
 import StepTwo from "./step-two";
+import StepZero from "./step-zero";
 import { ToolProvider, useTool } from "./tool-context";
 
 export default function Tool(props) {
