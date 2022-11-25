@@ -20,14 +20,14 @@ export default function StepFour() {
     useEffect(() => {
         if (!window) return;
 
-        // window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         confetti();
     }, []);
 
     return (
         <div className="w-full flex flex-col">
 
-            <div className="my-4 w-full bg-zinc-800 rounded-lg p-4">
+            <div className="my-4 w-full bg-black dark:bg-zinc-800 rounded-lg p-4 text-white dark:text-zinc-700">
                 <ul className="text-lg font-poppins font-medium">
                     {bullets.map(bullet => (
                         <li className="w-full flex flex-row items-start space-x-2 mb-2">

@@ -9,7 +9,7 @@ export default function Hero() {
 	return (
 		<section className="relative w-full from-zinc-800 to-zinc-900 h-screen flex flex-col justify-center overflow-hidden">
 			<img src="/assets/hero.png" className="absolute top-0 right-0 hidden dark:block" />
-			<img src="/assets/hero-light.png" className="absolute -top-14 md:bottom-0 right-0 dark:hidden" />
+			<img src="/assets/hero-light-2.png" className="absolute -top-14 md:bottom-0 right-0 dark:hidden" />
 			<div className="absolute top-0 left-0 w-full h-screen flex flex-col pt-24 md:pt-0 justify-center">
 				<div className="w-full max-w-6xl mx-auto py-32 px-4">
 					<h1 className="text-4xl md:text-8xl font-black text-left">

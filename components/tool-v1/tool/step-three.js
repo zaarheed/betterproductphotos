@@ -19,7 +19,6 @@ export default function StepThree() {
 
 		let { images: images_1 } = await response.json();
 
-        
         response = await api.post("image-generation/generate", {
             posts: [{ copy_url: tool.imgUrl, shortcode: shortcode }]
 		}).catch(error => console.log(error));
@@ -34,8 +33,8 @@ export default function StepThree() {
     }
 
     return (
-		<div className="w-full max-w-4xl mx-auto flex flex-col justify-center items-center my-32">
-            <div className="w-32 h-32">
+		<div className="w-full max-w-4xl mx-auto flex flex-col justify-center items-center my-32 text-black dark:text-zinc-700">
+            <div className="w-32 h-32 text-black dark:text-zinc-200">
                 <Spinner show={true} />
             </div>
             <p className="mt-4 font-bold text-3xl">We're generating your photos...</p>

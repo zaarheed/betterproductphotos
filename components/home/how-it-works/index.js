@@ -25,11 +25,11 @@ export default function HowItWorks() {
             <div className="w-full max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-1">
                 {videos.map(video => (
                     <div className="w-full flex flex-col" key={video.id}>
-                        <video className="w-full aspect-square overflow-hidden bg-gradient-to-bl dark:from-zinc-700 dark:to-zinc-800" autoPlay muted loop>
+                        <video className="w-full aspect-square overflow-hidden bg-gradient-to-bl from-gray-300 to-gray-200 dark:from-zinc-700 dark:to-zinc-800" autoPlay muted loop>
                             <source src={video.videoUrl} type="video/mp4" />
                         </video>
                         <div className="w-full flex flex-col items-start -mt-6 px-2">
-                            <p className="text-zinc-900 font-bold text-2xl bg-white dark:bg-zinc-100 h-10 w-10 rounded-full text-center flex flex-col justify-center border-2 border-zinc-900">
+                            <p className="text-white dark:text-zinc-900 font-bold text-2xl bg-black dark:bg-zinc-100 h-10 w-10 rounded-full text-center flex flex-col justify-center border-2 border-white dark:border-zinc-900">
                                 {video.id}
                             </p>
                             <p className="text-2xl font-semibold font-poppins my-1">

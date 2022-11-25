@@ -134,14 +134,14 @@ export default function StepTwo() {
                 >
                     <div className="w-full h-full flex flex-col justify-center space-y-8">
 						<div className="w-full flex flex-col space-y-2">
-							<h3 className="w-full text-xl font-semibold text-zinc-100 font-plex">
+							<h3 className="w-full text-xl font-semibold text-black dark:text-zinc-100 font-plex">
 								Where should we send the results?
 							</h3>
 							<input
 								className={`
 									w-full dark:bg-zinc-800 py-3 px-4 focus:outline-none placeholder-zinc-400
-									appearance-none focus:border-zinc-700 hover:border-zinc-700 border-4 border-zinc-800
-									text-zinc-200
+									appearance-none focus:border-zinc-700 hover:border-zinc-700 border-2 border-zinc-800
+									text-black dark:text-zinc-200
 								`}
 								placeholder="Enter your email address"
 								value={values.email}
@@ -153,8 +153,8 @@ export default function StepTwo() {
 							<input
 								className={`
 									w-full dark:bg-zinc-800 py-3 px-4 focus:outline-none placeholder-zinc-400
-									appearance-none focus:border-zinc-700 hover:border-zinc-700 border-4 border-zinc-800
-									text-zinc-200
+									appearance-none focus:border-zinc-700 hover:border-zinc-700 border-2 border-zinc-800
+									text-black dark:text-zinc-200
 								`}
 								placeholder="Enter your telephone (optional)"
 								value={values.telephone}
@@ -165,15 +165,15 @@ export default function StepTwo() {
 						</div>
 
 						<div className="w-full flex flex-col space-y-2">
-							<h3 className="w-full text-xl font-semibold text-zinc-100 font-plex">
+							<h3 className="w-full text-xl font-semibold text-black dark:text-zinc-100 font-plex">
 								Quality
 							</h3>
 							<div className="w-full flex flex-row items-center space-x-1">
 								<button
 									className={classNames(
 										"w-full rounded-l-lg px-2 py-4",
-										"dark:bg-zinc-800 border-2",
-										values.quality === "low" ? "border-zinc-100" : "border-transparent"
+										"bg-gray-200 dark:bg-zinc-800 border-2",
+										values.quality === "low" ? "border-black dark:border-zinc-100" : "border-transparent"
 									)}
 									type="button"
 									onClick={() => setFieldValue("quality", "low")}
@@ -183,7 +183,7 @@ export default function StepTwo() {
 								<button
 									className={classNames(
 										"w-full rounded-none px-2 py-4",
-										"dark:bg-zinc-800 border-2",
+										"bg-gray-200 dark:bg-zinc-800 border-2",
 										values.quality === "medium" ? "border-zinc-100" : "border-transparent"
 									)}
 									type="button"
@@ -194,8 +194,8 @@ export default function StepTwo() {
 								<button
 									className={classNames(
 										"w-full rounded-none px-2 py-4",
-										"dark:bg-zinc-800 border-2",
-										values.quality === "high" ? "border-zinc-100" : "border-transparent"
+										"bg-gray-200 dark:bg-zinc-800 border-2",
+										values.quality === "high" ? "border-black dark:border-zinc-100" : "border-transparent"
 									)}
 									type="button"
 									onClick={() => setShowUpgradeModal(true)}
@@ -205,8 +205,8 @@ export default function StepTwo() {
 								<button
 									className={classNames(
 										"w-full rounded-r-lg px-2 py-4",
-										"dark:bg-zinc-800 border-2",
-										values.quality === "hd" ? "border-zinc-100" : "border-transparent"
+										"bg-gray-200 dark:bg-zinc-800 border-2",
+										values.quality === "hd" ? "border-black dark:border-zinc-100" : "border-transparent"
 									)}
 									type="button"
 									onClick={() => setShowUpgradeModal(true)}
@@ -217,15 +217,15 @@ export default function StepTwo() {
 						</div>
 
 						<div className="w-full flex flex-col space-y-2">
-							<h3 className="w-full text-xl font-semibold text-zinc-100 font-plex">
+							<h3 className="w-full text-xl font-semibold text-black dark:text-zinc-100 font-plex">
 								Quantity
 							</h3>
 							<div className="w-full flex flex-row items-center space-x-1">
 								<button
 									className={classNames(
 										"w-full rounded-l-lg px-2 py-4",
-										"dark:bg-zinc-800 border-2",
-										values.quantity === 5 ? "border-zinc-100" : "border-transparent"
+										"bg-gray-200 dark:bg-zinc-800 border-2",
+										values.quantity === 5 ? "border-black dark:border-zinc-100" : "border-transparent"
 									)}
 									type="button"
 									onClick={() => setShowUpgradeModal(true)}
@@ -235,8 +235,8 @@ export default function StepTwo() {
 								<button
 									className={classNames(
 										"w-full rounded-none px-2 py-4",
-										"dark:bg-zinc-800 border-2",
-										values.quantity === 50 ? "border-zinc-100" : "border-transparent"
+										"bg-gray-200 dark:bg-zinc-800 border-2",
+										values.quantity === 50 ? "border-black dark:border-zinc-100" : "border-transparent"
 									)}
 									type="button"
 									onClick={() => setShowUpgradeModal(true)}
@@ -246,8 +246,8 @@ export default function StepTwo() {
 								<button
 									className={classNames(
 										"w-full rounded-none px-2 py-4",
-										"dark:bg-zinc-800 border-2",
-										values.quantity === 100 ? "border-zinc-100" : "border-transparent"
+										"bg-gray-200 dark:bg-zinc-800 border-2",
+										values.quantity === 100 ? "border-black dark:border-zinc-100" : "border-transparent"
 									)}
 									type="button"
 									onClick={() => setShowUpgradeModal(true)}
@@ -257,8 +257,8 @@ export default function StepTwo() {
 								<button
 									className={classNames(
 										"w-full rounded-r-lg px-2 py-4",
-										"dark:bg-zinc-800 border-2",
-										values.quantity === 1000 ? "border-zinc-100" : "border-transparent"
+										"bg-gray-200 dark:bg-zinc-800 border-2",
+										values.quantity === 1000 ? "border-black dark:border-zinc-100" : "border-transparent"
 									)}
 									type="button"
 									onClick={() => setShowUpgradeModal(true)}
@@ -269,7 +269,7 @@ export default function StepTwo() {
 						</div>
 
 						<div className="w-full flex flex-col space-y-2">
-							<h3 className="w-full text-xl font-semibold text-zinc-100 font-plex">
+							<h3 className="w-full text-xl font-semibold text-black dark:text-zinc-100 font-plex">
 								Styles
 							</h3>
 							<FieldArray name="styles">
@@ -280,9 +280,9 @@ export default function StepTwo() {
 												key={style.id}
 												className={classNames(
 													"w-full relative aspect-square flex flex-col justify-center items-center px-2 py-4",
-													"dark:bg-zinc-800 overflow-hidden relative border-2",
-													"duration-200 last:rounded-br-lg",
-													values.styles.indexOf(style.id) > -1 ? "dark:border-zinc-100" : "border-transparent"
+													"bg-gray-200 dark:bg-zinc-800 overflow-hidden relative border-2",
+													"duration-200 last:rounded-br-lg first:rounded-tl-lg",
+													values.styles.indexOf(style.id) > -1 ? "border-black dark:border-zinc-100" : "border-transparent"
 												)}
 												type="button"
 												onClick={() => {
@@ -300,7 +300,7 @@ export default function StepTwo() {
 												}}
 											>
 												{style.pro && (
-													<div className="rounded-md py-px px-2 bg-gradient-to-br dark:from-zinc-100 dark:to-zinc-200 text-xs dark:text-zinc-900 absolute top-1 right-1 font-medium uppercase">
+													<div className="rounded-md py-px px-2 bg-gradient-to-br from-white dark:from-zinc-100 to-white dark:to-zinc-200 text-xs dark:text-zinc-900 absolute top-1 right-1 font-medium uppercase">
 														Pro
 													</div>
 												)}

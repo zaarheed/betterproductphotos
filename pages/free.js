@@ -6,10 +6,10 @@ export default function Free() {
 	return (
 		<div className="w-full flex min-h-screen flex-col bg-white dark:bg-zinc-900 dark:text-zinc-100">
 
-			<section className="w-full max-w-6xl mx-auto px-4">
+			<section className="w-full max-w-6xl mx-auto px-4 my-10">
 				<Tool />
 			</section>
-			
+
 			<TrustedBy />
 
 			<Footer />

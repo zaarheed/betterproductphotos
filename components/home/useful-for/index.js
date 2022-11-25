@@ -7,7 +7,7 @@ export default function UsefulFor() {
                 <div className="w-full md:w-7/12 flex flex-col">
                     <p className="text-4xl font-black font-poppins mb-10 leading-[3.5rem]">
                         Use your photos to get <img src="https://ucarecdn.com/3e147e46-b844-4bc5-8684-dd359b846ae0/like_comments.svg" className="inline-block h-12 mx-2" />
-                        on Instagram, viral on TikTok <img src="/assets/tiktok.png" className="inline-block h-8 -mt-2 invert" />,
+                        on Instagram, go viral on TikTok <img src="/assets/tiktok.png" className="inline-block h-8 -mt-2 invert" />,
                         sell more on <img src="/assets/shopify-bag.png" className="ml-2 -mt-2 w-8 h-8 inline-block" />hopify and make your
                         brand look <span className="text-yellow-500">professional {" "}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="-mt-2 w-12 h-12 inline-block">

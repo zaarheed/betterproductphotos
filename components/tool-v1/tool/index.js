@@ -15,11 +15,11 @@ export default function Tool(props) {
 
 function Form(props) {    
     const { step } = useTool();
-
+    
     if (step === 1) {
         return <StepZero {...props} />;
     }
-
+    
     if (step === 2) {
         return <StepTwo {...props} />;
     }
