@@ -100,7 +100,7 @@ export default function UseCases() {
             <div className="w-full max-w-6xl mx-auto px-4 py-4 flex flex-row items-center">
                 <div className="w-full grid grid-cols-3 lg:grid-cols-7 gap-8 w-full">
                     {cases.map(useCase => (
-                        <div className="border-2 dark:border-zinc-100 rounded-lg p-2 w-full aspect-square flex flex-col items-center text-center text-xs md:text-sm justify-center">
+                        <div key={useCase.id} className="border-2 dark:border-zinc-100 rounded-lg p-2 w-full aspect-square flex flex-col items-center text-center text-xs md:text-sm justify-center">
                             {useCase.icon}
                             {useCase.label}
                         </div>

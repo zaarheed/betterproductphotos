@@ -1,5 +1,6 @@
 import Modal from "@/components/shared/modal";
 import RegisterInterest from "@/components/shared/register-interest";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Hero() {
@@ -30,24 +31,24 @@ export default function Hero() {
 					</p>
 
 					<div className="w-full flex flex-col md:flex-row justify-start mt-8 mb-2 space-y-4 md:space-y-0 md:space-x-4">
-						<button
-							className={`
+						<Link href="/free" passHref>
+							<a
+								className={`
 									font-extrabold text-xl md:text-xl py-2 px-2 bg-black text-white dark:text-zinc-100 dark:bg-transparent 
-									hover:bg-white dark:hover:bg-transparent hover:text-black group
+									hover:bg-white dark:hover:bg-transparent hover:text-black group text-center
 									dark:hover:text-zinc-900 border-4 border-black dark:border-zinc-100
 								`}
-							type="button"
-							onClick={() => setModal(true)}
-						>
-							<div
-								className={`
-										w-full py-2 px-2 bg-black dark:bg-transparent group-hover:bg-white
-										dark:group-hover:bg-zinc-100
-									`}
 							>
-								Try it yourself &rarr;
-							</div>
-						</button>
+								<div
+									className={`
+											w-full py-2 px-2 bg-black dark:bg-transparent group-hover:bg-white
+											dark:group-hover:bg-zinc-100
+										`}
+								>
+									Try it yourself &rarr;
+								</div>
+							</a>
+						</Link>
 						<Modal show={showModal} onClose={() => setModal(false)} size="sm">
 							<RegisterInterest />
 						</Modal>

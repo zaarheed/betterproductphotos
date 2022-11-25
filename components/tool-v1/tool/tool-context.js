@@ -2,7 +2,9 @@ import { createContext, useContext, useState } from "react";
 
 const INITIAL_STATE = {
     tool: {
-        inputJson: "",
+        imgUrl: "",
+        email: "",
+        telephone: "",
         loadedImages: [],
     },
     setTool: () => {},
@@ -24,7 +26,6 @@ export function ToolProvider({ children }) {
     }
 
     const nextStep = () => {
-
         setStep(step + 1);
     }
 

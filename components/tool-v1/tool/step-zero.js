@@ -1,18 +1,24 @@
-import ImageKit from 'imagekit';
 import { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import config from '@/constants/config';
 import { lambda } from '@/services/api';
+import { Spinner } from '@/components/shared/loading-spinner';
+import { useTool } from './tool-context';
 
 const { imagekitPublicKey, imagekitUrlEndpoint } = config;
 
 export default function StepZero() {
     const [files, setFiles] = useState([]);
+    const { tool, setTool, nextStep } = useTool();
+    const [loading, setLoading] = useState(false);
+
     const { getRootProps, getInputProps } = useDropzone({
-        accept: 'image/*',
+        accept: ['.png', '.gif', '.jpeg', '.jpg'],
         onDrop: acceptedFiles => {
             console.log("accepted", acceptedFiles);
             setFiles([...acceptedFiles.map(file => Object.assign(file, { preview: URL.createObjectURL(file) })), ...files]);
+            
+            handleNextStep([...acceptedFiles.map(file => Object.assign(file, { preview: URL.createObjectURL(file) })), ...files]);
         }
     });
 
@@ -21,7 +27,8 @@ export default function StepZero() {
         files.forEach(file => URL.revokeObjectURL(file.preview));
     }, [files]);
 
-    const handleNextStep = async () => {
+    const handleNextStep = async (files = []) => {
+        setLoading(true);
         const response = await lambda.get("/get-image-token").catch(error => console.log(error));
         const { signature, token, expire } = await response.json();
 
@@ -33,28 +40,27 @@ export default function StepZero() {
         formData.append("token", token);
         formData.append("expire", expire);
         formData.append("fileName", "upload");
+        formData.append("folder", "photosauceai");
 
         const uploadResponse = await fetch("https://upload.imagekit.io/api/v1/files/upload", {
             method: "POST",
             body: formData
         });
+
+        const { url } = await uploadResponse.json();
+
+        setTool(tool => ({ ...tool, imgUrl: url }));
+
+        nextStep();
     }
 
     return (
-		<div className="w-full max-w-4xl mx-auto flex flex-col">
-            <div className="w-96 mx-auto h-1 bg-zinc-300" />
-
-            <div className="my-4 w-full">
-                <p className="text-2xl font-bold">
-                    Step 1: Upload your images
-                </p>
-            </div>
-
-            <div className="w-full">
+		<div className="w-full h-full p-4 flex flex-col">
+            <div className="w-full h-full">
                 <div
                     {...getRootProps({
-                        className: `w-full border-4 border-dashed border-zinc-300 rounded-lg h-96
-                                    flex flex-col p-4 justify-center items-center group relative`
+                        className: `w-full h-full border-4 border-dashed border-zinc-300 rounded-lg
+                                    flex flex-col p-4 justify-center items-center group relative py-32`
                     })}
                 >
                     <input {...getInputProps()} />
@@ -64,29 +70,20 @@ export default function StepZero() {
                             <path d="M12 12v9" />
                             <path d="m16 16-4-4-4 4" />
                         </svg>
-                        <span className="">Drag and drop files here</span>
+                        <span className="hidden md:block">Drag and drop a photo here</span>
+                        <span className="md:hidden">Press to upload</span>
                     </div>
-                    <div className="absolute bottom-0 left-0 w-full flex flex-row space-x-4 p-4 overflow-x-scroll">
-                        {files.map(file => (
-                            <figure key={file.preview} className="h-20 w-20 overflow-hidden rounded-lg shrink-0">
-                                <img src={file.preview} className="object-cover w-full h-full" />
-                            </figure>
-                        ))}
-                    </div>
+                    <p className="hidden md:block">or press to upload</p>
+                    {loading && (
+                        <div className="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center bg-zinc-800">
+                            <div className="h-16 w-16">
+                                <Spinner show={true} />
+                            </div>
+                        </div>
+                    )}
                 </div>
-            </div>
-
-            <div className="my-4 w-full flex flex-row justify-between">
-                <button
-                    className={`
-                        bg-zinc-100 text-lg font-medium text-zinc-900 py-4 px-8
-                    `}
-                    type="button"
-                    onClick={handleNextStep}
-                >
-                    Next Step
-                </button>
             </div>
         </div>
 	);
 }
+

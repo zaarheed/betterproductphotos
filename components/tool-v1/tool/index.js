@@ -1,3 +1,4 @@
+import StepFour from "./step-four";
 import StepOne from "./step-one";
 import StepThree from "./step-three";
 import StepTwo from "./step-two";
@@ -14,9 +15,9 @@ export default function Tool(props) {
 
 function Form(props) {    
     const { step } = useTool();
-    
+
     if (step === 1) {
-        return <StepOne {...props} />;
+        return <StepZero {...props} />;
     }
 
     if (step === 2) {
@@ -25,5 +26,9 @@ function Form(props) {
 
     if (step === 3) {
         return <StepThree {...props} />;
+    }
+
+    if (step === 4) {
+        return <StepFour {...props} />;
     }
 }

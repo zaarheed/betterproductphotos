@@ -22,3 +22,5 @@ function getTempFolderPath() {
         return `/tmp`;
     }
 }
+
+export const SUBSCRIPTION_LINK = process.env.NEXT_PUBLIC_SUBSCRIPTION_LINK;

@@ -24,7 +24,7 @@ export default function HowItWorks() {
         <section className="w-full my-32">
             <div className="w-full max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-1">
                 {videos.map(video => (
-                    <div className="w-full flex flex-col">
+                    <div className="w-full flex flex-col" key={video.id}>
                         <video className="w-full aspect-square overflow-hidden bg-gradient-to-bl dark:from-zinc-700 dark:to-zinc-800" autoPlay muted loop>
                             <source src={video.videoUrl} type="video/mp4" />
                         </video>
