@@ -24,6 +24,7 @@ export default function Examples() {
                         <div className="w-full flex flex-col space-y-4 mt-8">
                             {sets.map(set => (
                                 <button
+                                    key={set.id}
                                     className={classNames(
                                         "w-full flex flex-row space-x-4 items-center border-2 rounded-lg p-2",
                                         "duration-200 cursor-pointer appearance-none",
@@ -50,8 +51,8 @@ export default function Examples() {
                                 Results
                             </div>
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-1 dark:bg-zinc-100 pt-4">
-                                {sets[+selectedExample - 1].results.map(image => (
-                                    <figure className="w-full aspect-square overflow-hidden">
+                                {sets[+selectedExample - 1].results.map((image, index) => (
+                                    <figure className="w-full aspect-square overflow-hidden" key={index}>
                                         <img src={image} className="w-full h-full object-cover" />
                                     </figure>
                                 ))}
