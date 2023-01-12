@@ -10,6 +10,8 @@ export const IMAGEKIT_PUBLIC_KEY = process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY;
 
 export const IMAGEKIT_URL_ENDPOINT = process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT;
 
+export const IS_DEMO = true;
+
 export const TEMP_FOLDER_PATH = getTempFolderPath();
 
 export const SUBSCRIPTION_LINK = process.env.NEXT_PUBLIC_SUBSCRIPTION_LINK;

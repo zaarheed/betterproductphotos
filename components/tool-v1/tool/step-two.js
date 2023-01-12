@@ -6,6 +6,7 @@ import { useTool } from "./tool-context";
 import classNames from "classnames";
 import Modal from "@/components/shared/modal";
 import UpgradeLaterModal from "@/components/shared/upgrade-later-modal";
+import { IS_DEMO } from "@/constants/config";
 
 const registerInterestSchema = Yup.object().shape({
     telephone: Yup.string(),
@@ -80,6 +81,11 @@ export default function StepTwo() {
 	const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
     const handleSubmit = async ({ email, telephone }) => {
+		if (IS_DEMO) {
+			nextStep();
+			return;
+		}
+		
         setLoading(true);
         setTool(_tool => ({ ..._tool, email, telephone }));
 

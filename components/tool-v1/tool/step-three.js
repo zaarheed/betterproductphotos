@@ -1,4 +1,5 @@
 import { Spinner } from "@/components/shared/loading-spinner";
+import { IS_DEMO } from "@/constants/config";
 import { lambda } from "@/services/api";
 import { useEffect } from "react";
 import { useTool } from "./tool-context"
@@ -11,6 +12,27 @@ export default function StepThree() {
     }, []);
 
     const handleGenerate = async () => {
+        if (IS_DEMO) {
+            setTool({
+                resultImages: [
+                    { copy_url: "/assets/examples/1/cover.jpg" },
+                    { copy_url: "/assets/examples/1/result-1.jpg" },
+                    { copy_url: "/assets/examples/1/result-2.jpg" },
+                    { copy_url: "/assets/examples/1/result-3.jpg" },
+                    { copy_url: "/assets/examples/1/result-4.jpg" },
+                    { copy_url: "/assets/examples/1/result-5.jpg" },
+                    { copy_url: "/assets/examples/1/result-6.jpg" },
+                    { copy_url: "/assets/examples/1/result-7.jpg" },
+                    { copy_url: "/assets/examples/1/result-8.jpg" }
+                ]
+            })
+
+
+            setTimeout(() => {
+                nextStep();
+            }, 3000);
+        }
+
         const shortcode = (new Date()).getTime();
         let response = await lambda.post("/generate", {
 			posts: [{ copy_url: tool.imgUrl, shortcode: shortcode  }],

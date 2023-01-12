@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { IMAGEKIT_PUBLIC_KEY } from "@/constants/config";
+import { IMAGEKIT_PUBLIC_KEY, IS_DEMO } from "@/constants/config";
 import { lambda } from "@/services/api";
 import { Spinner } from "@/components/shared/loading-spinner";
 import { useTool } from "./tool-context";
@@ -27,6 +27,11 @@ export default function StepOne() {
     }, [files]);
 
     const handleNextStep = async (files = []) => {
+        if (IS_DEMO) {
+            nextStep();
+            return;
+        }
+        
         setLoading(true);
         const response = await lambda.get("/get-image-token").catch(error => console.log(error));
         const { signature, token, expire } = await response.json();

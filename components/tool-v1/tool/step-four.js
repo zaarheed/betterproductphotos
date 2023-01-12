@@ -30,22 +30,6 @@ export default function StepFour() {
             </div>
 
             <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-0">
-                <a
-                    className={classNames(
-                        "overflow-hidden group w-full aspect-square pointer-cursor bg-yellow-500 p-3",
-                    )}
-                    href={tool.imgUrl}
-                    target="_blank"
-                >
-                    <div className="w-full h-full overflow-hidden">
-                        <img
-                            src={tool.imgUrl}
-                            className={classNames(
-                                "object-cover w-full duration-200",
-                            )}
-                        />
-                    </div>
-                </a>
                 {resultImages.map(image => (
                     <a
                         className={classNames(
